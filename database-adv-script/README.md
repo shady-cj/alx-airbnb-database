@@ -45,3 +45,45 @@ FROM users
 FULL OUTER JOIN bookings
     ON users.user_id = bookings.user_id;
 ```
+
+
+# subqueries.sql
+
+This script contains two example SQL queries demonstrating the use of subqueries:
+
+1. Find properties with an average rating greater than 4.0
+```
+SELECT * 
+FROM properties 
+WHERE property_id IN (
+    SELECT property_id 
+    FROM reviews 
+    GROUP BY property_id 
+    HAVING AVG(rating) > 4.0
+);
+
+```
+
+Uses a non-correlated subquery in the WHERE clause.
+
+The inner query groups reviews by property_id and filters those with AVG(rating) > 4.0.
+
+The outer query retrieves all property details for those IDs.
+
+2. Find users who have made more than 3 bookings
+
+```
+SELECT * 
+FROM users 
+WHERE (
+    SELECT COUNT(*) 
+    FROM bookings 
+    WHERE bookings.user_id = users.user_id
+) > 3;
+```
+
+Uses a correlated subquery.
+
+For each user, the inner query counts their bookings.
+
+The outer query returns users only if the count is greater than 3.
