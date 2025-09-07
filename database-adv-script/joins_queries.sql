@@ -2,7 +2,7 @@
 SELECT * FROM bookings INNER JOIN users ON bookings.user_id = users.user_id;
 
 --  retrieve all properties and their reviews, including properties that have no reviews.
-SELECT * FROM properties LEFT JOIN reviews ON properties.property_id = reviews.property_id;
+SELECT * FROM properties LEFT JOIN reviews ON properties.property_id = reviews.property_id ORDER BY properties.created_at DESC;
 
 -- to retrieve all users and all bookings, even if the user has no booking or a booking is not linked to a user. 
 -- full outer join isn't direct supported in native mysql so we'll use union
