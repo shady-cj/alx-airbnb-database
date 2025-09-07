@@ -1,5 +1,5 @@
 -- retrieve all bookings and the user associated to them
-SELECT * FROM bookings JOIN users ON bookings.user_id = users.user_id;
+SELECT * FROM bookings INNER JOIN users ON bookings.user_id = users.user_id;
 
 --  retrieve all properties and their reviews, including properties that have no reviews.
 SELECT * FROM properties LEFT JOIN reviews ON properties.property_id = reviews.property_id;
@@ -10,6 +10,12 @@ SELECT * FROM properties LEFT JOIN reviews ON properties.property_id = reviews.p
 SELECT * FROM users LEFT JOIN bookings ON users.user_id = bookings.user_id
 UNION
 SELECT * FROM users RIGHT JOIN bookings ON users.user_id = bookings.user_id;
+
+-- for sql languages that supports full outer join
+SELECT *
+FROM users
+FULL OUTER JOIN bookings
+    ON users.user_id = bookings.user_id;
 
 
 
