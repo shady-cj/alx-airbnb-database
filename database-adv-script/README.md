@@ -87,3 +87,32 @@ Uses a correlated subquery.
 For each user, the inner query counts their bookings.
 
 The outer query returns users only if the count is greater than 3.
+
+
+# aggregations_and_window_functions.sql
+
+This script demonstrates two SQL techniques:
+
+1. Aggregate with GROUP BY
+
+```
+SELECT user_id, COUNT(*) 
+FROM bookings 
+GROUP BY user_id;
+```
+
+Returns the total number of bookings made by each user.
+
+2. Window functions (ROW_NUMBER, RANK)
+
+```
+SELECT property_id, booking_count, 
+       ROW_NUMBER() OVER(ORDER BY booking_count) 
+FROM (
+    SELECT property_id, COUNT(*) AS booking_count 
+    FROM bookings 
+    GROUP BY property_id
+) derived;
+```
+
+Counts bookings per property, then ranks properties based on total bookings received.
