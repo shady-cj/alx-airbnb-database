@@ -5,6 +5,6 @@
 
 Results after running the first command
 
-The after making some optimizations such as indexing columns, and also reducing the number of columns to return it improved the query performance
+The after making some optimizations such as indexing columns, using joins and also reducing the number of columns it improved the query performance.
 
 <img width="457" height="79" alt="explain optimized" src="https://github.com/user-attachments/assets/f2de5d8b-0906-4ce1-8bdf-62695a5f7601" />
