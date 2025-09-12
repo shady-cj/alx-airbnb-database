@@ -9,13 +9,13 @@ CREATE TABLE new_bookings (
     check_out_date DATE NOT NULL,
     status ENUM('pending', 'confirmed', 'cancelled') DEFAULT 'pending',
     CREATED_AT TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---    check_in_quarter INT GENERATED ALWAYS AS (
---        QUARTER(check_in_date)
---    ) STORED,
+    check_in_quarter INT GENERATED ALWAYS AS (
+        QUARTER(check_in_date)
+    ) STORED,
     PRIMARY KEY(booking_id, check_in_date)
 )
 
-PARTITION BY RANGE (MONTH(check_in_date)) (
+PARTITION BY RANGE (check_in_quarter) (
 	PARTITION quarter1 VALUES LESS THAN (5),
     PARTITION quarter2 VALUES LESS THAN (9),
     PARTITION quarter3 VALUES LESS THAN MAXVALUE
