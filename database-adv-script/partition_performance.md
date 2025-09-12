@@ -144,3 +144,4 @@ SELECT COUNT(*) FROM new_bookings WHERE check_in_date BETWEEN '2024-01-01' AND '
 SHOW PROFILES;
 
 ```
+<img width="683" height="181" alt="image" src="https://github.com/user-attachments/assets/496ef43f-3824-4229-aa32-9c68c608b941" />
