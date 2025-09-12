@@ -12,7 +12,7 @@ CREATE TABLE new_bookings (
     check_in_quarter INT GENERATED ALWAYS AS (
         QUARTER(check_in_date)
     ) STORED,
-    PRIMARY KEY(booking_id, check_in_date)
+    PRIMARY KEY(booking_id, check_in_date, check_in_quarter)
 )
 
 PARTITION BY RANGE (check_in_quarter) (
