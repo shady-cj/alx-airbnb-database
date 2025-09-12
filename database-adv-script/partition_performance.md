@@ -103,7 +103,7 @@ WHERE check_in_date BETWEEN '2024-03-01' AND '2024-03-31';
 __Partitioned__
 
 ```
-EXPLAIN PARTITIONS SELECT * FROM new_bookings 
+EXPLAIN SELECT * FROM new_bookings 
 WHERE check_in_date BETWEEN '2024-03-01' AND '2024-03-31';
 ```
 
@@ -121,7 +121,7 @@ WHERE check_in_date BETWEEN '2024-05-01' AND '2024-08-31';
 
 __Partitioned__
 ```
-EXPLAIN PARTITIONS SELECT COUNT(*) FROM new_bookings
+EXPLAIN SELECT COUNT(*) FROM new_bookings
 WHERE check_in_date BETWEEN '2024-05-01' AND '2024-08-31';
 ```
 
