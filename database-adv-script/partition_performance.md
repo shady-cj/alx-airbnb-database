@@ -120,9 +120,10 @@ WHERE check_in_date BETWEEN '2024-05-01' AND '2024-08-31';
 ```
 
 __Partitioned__
+```
 EXPLAIN PARTITIONS SELECT COUNT(*) FROM new_bookings
 WHERE check_in_date BETWEEN '2024-05-01' AND '2024-08-31';
-
+```
 
 ✅ Partition pruning ensures only quarter2 is read in new_bookings.
 
