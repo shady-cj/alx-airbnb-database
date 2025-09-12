@@ -54,10 +54,13 @@ CREATE TABLE new_bookings (
     check_in_date DATE NOT NULL,
     check_out_date DATE NOT NULL,
     status ENUM('pending', 'confirmed', 'cancelled') DEFAULT 'pending',
+    check_in_quarter TINYINT UNSIGNED GENERATED ALWAYS AS (
+        QUARTER(check_in_date)
+    ) STORED,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (booking_id, check_in_date)
 )
-PARTITION BY RANGE (MONTH(check_in_date)) (
+PARTITION BY RANGE (check_in_quarter) (
     PARTITION quarter1 VALUES LESS THAN (5),   -- Jan–Apr
     PARTITION quarter2 VALUES LESS THAN (9),   -- May–Aug
     PARTITION quarter3 VALUES LESS THAN MAXVALUE -- Sep–Dec
