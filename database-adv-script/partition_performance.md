@@ -58,7 +58,7 @@ CREATE TABLE new_bookings (
         QUARTER(check_in_date)
     ) STORED,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (booking_id, check_in_date)
+    PRIMARY KEY (booking_id, check_in_date, check_in_quarter)
 )
 PARTITION BY RANGE (check_in_quarter) (
     PARTITION quarter1 VALUES LESS THAN (5),   -- Jan–Apr
